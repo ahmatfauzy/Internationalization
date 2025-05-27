@@ -60,6 +60,11 @@ public class LoginPage extends javax.swing.JFrame {
         });
 
         btnLogin.setText("Login Now");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         lblForgot.setText("Forgot Password?");
 
@@ -180,6 +185,38 @@ public class LoginPage extends javax.swing.JFrame {
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        String username = txtUsername.getText().trim();
+        String password = txtPassword.getText().trim();
+
+        // Basic validation
+        if (username.isEmpty() || password.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Please enter both username and password",
+                    "Login Error",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // You can add your authentication logic here
+        // For now, we'll accept any non-empty credentials
+        try {
+            // Create and show HomePage
+            HomePage homePage = new HomePage();
+            homePage.setVisible(true);
+
+            // Close current LoginPage
+            this.dispose();
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Error opening HomePage: " + e.getMessage(),
+                    "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void applyFont() {
         try {
